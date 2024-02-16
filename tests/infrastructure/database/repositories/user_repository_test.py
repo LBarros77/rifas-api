@@ -35,17 +35,27 @@ def test_add_user():
     )
 
     sql = '''
-        SELECT * FROM user
-        where name = {}
-        AND email = {}
+        SELECT * FROM users
+        WHERE name = '{}'
+        AND email = '{}'
     '''.format(mocked_name, mocked_email)
     response = connection.execute(text(sql))
-    register = response.fetchall()[0]
+    registry = response.fetchall()[0]
 
-    assert register.name == mocked_name
-    assert register.email == mocked_email
+    assert registry.name == mocked_name
+    assert registry.email == mocked_email
 
     connection.execute(text(f'''
-        DELETE FROM user WHERE id = {register.id}
+        DELETE FROM users WHERE id = '{registry.id}'
     '''))
     connection.commit()
+
+
+def test_delete_user():
+    user_repository = UserRepository()
+    mocked_id = "9rfvGL08-gfgk5486-0348dg"
+    user_repository.delete_user(mocked_id)
+    user_id = connection.execute(text(f'''
+        SELECT id FROM users WHERE id = '{mocked_id}'
+    '''))
+    assert mocked_id is not user_id
