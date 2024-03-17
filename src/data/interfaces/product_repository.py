@@ -1,48 +1,20 @@
 from abc import ABC, abstractmethod
-from typing import List, Integer, String
-from src.domain.models.product import Product, Participant
+from src.domain.models import ProductModel
 
 
-class IProductRepository:
-
-    @abstractmethod
-    def get_numbers(self, game_mode: str) -> List: pass
-
-    @abstractmethod
-    def get_participants(self, product_id: int) -> List[Participant]: pass
-
-    @abstractmethod
-    def get_all_numbers(self) -> List: pass
+class ProductRepositoryInterface:
+    """ product Repository Interface """
+	@abstractmethod
+	def find_by_id(self, product_id: str) -> List[ProductModel]:
+		""" Find product by id
+		:param - product_id is the product id
+		:return - The return is a Product
+		"""
+		Exception("Should be needed implament find_by_id")
 
     @abstractmethod
-    def set_numbers(self, numbers_list: list) -> None: pass
-
-    @abstractmethod
-    def get_quantity_available_numbers(self) -> Integer: pass
-
-    @abstractmethod
-    def get_random_numbers(self, quantity: int) -> String: pass
-
-    @abstractmethod
-    def get_available_numbers(self) -> List: pass
-
-    @abstractmethod
-    def get_quantity_reserved_numbers(self) -> Integer: pass
-
-    @abstractmethod
-    def get_reserved_numbers(self) -> List[Integer]: pass
-
-    @abstractmethod
-    def get_quantity_payed_numbers(self) -> Integer: pass
-
-    @abstractmethod
-    def percentage(self) -> Integer: pass
-
-    @abstractmethod
-    def get_participants(self) -> List[Participant]: pass
-
-    @abstractmethod
-    def get_reserved_participants(self) -> List[Participant]: pass
-
-    @abstractmethod
-    def get_promotions(self) -> List: pass
+    def save(self, product: ProductModel) -> None:
+        """ Method to Save Product
+		:param - product is object of type Produt
+		"""
+		Exception("Should be needed implament find_by_id")

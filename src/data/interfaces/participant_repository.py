@@ -1,10 +1,10 @@
 from abc import ABC, abstractmethod
 from typing import List
-from src.domain.models.participant import Participant
+from src.domain.models import ParticipantModel as Participant
 
 
-class IParticipantRepository(ABC):
-
+class ParticipantRepositoryInterface(ABC):
+    """ Participant Repository Interface """
     @abstractmethod
     def get_reserveds(self) -> List: pass
 

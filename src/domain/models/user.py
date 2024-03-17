@@ -1,7 +1,7 @@
 class User:
     def __init__(
         self,
-        id: str,
+        id: int,
         name: str,
         phone_number: str,
         status: boolean,
@@ -11,7 +11,7 @@ class User:
         pix: str,
         affiliate: boolean,
         remember_token: str,
-        timestamps: DateTime
+        created_at: DateTime
     ) -> None:
         self.id: id
         self.name = name
@@ -23,4 +23,4 @@ class User:
         self.pix = pix
         self.affiliate = affiliate
         self.remember_token = remember_token
-        self.timestamps = timestampss
+        self.created_at = created_at

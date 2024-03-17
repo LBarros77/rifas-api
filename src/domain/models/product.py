@@ -1,10 +1,13 @@
-class Product:
+from decimal import Decimal
+
+
+class ProductModel:
     def __init__(
         self,
         id: int,
         name: str,
         slug: str,
-        price: float,
+        price: Decimal,
         status: str,
         type_raffles: str,
         winner: str,
@@ -23,7 +26,6 @@ class Product:
         game_mode: str,
         numbers: str,
         affiliate_earning: str,
-        description: str
     ) -> None:
         self.id = id
         self.name = name
@@ -47,4 +49,3 @@ class Product:
         self.game_mode = game_mode
         self.numbers = numbers
         self.affiliate_earning = affiliate_earning
-        self.description = description

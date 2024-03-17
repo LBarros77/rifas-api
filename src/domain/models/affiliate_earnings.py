@@ -1,4 +1,4 @@
-class AffiliateEarning:
+class AffiliateEarningEntity:
     def __init__(
         self,
         product_id: int,

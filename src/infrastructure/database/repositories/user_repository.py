@@ -1,15 +1,15 @@
 from typing import List
-from uuid import uuid4
 from src.infrastructure.database.settings.connection import DBConnectionHandler
-from src.infrastructure.database.entities.user import User as UserEntity
-from src.data.interfaces.user_repository import IUserRepository
+from src.infrastructure.database.entities import User
+from src.data.interfaces.user_repository import UserRepositoryInterface
 
 
-class UserRepository(IUserRepository):
-
+class UserRepository(UserRepositoryInterface):
+    """ Class to define Repository: User """
     @classmethod
     def add_user(
         cls,
+        id: str,
         name: str,
         phone_number: str,
         status: bool,
@@ -19,12 +19,12 @@ class UserRepository(IUserRepository):
         pix: str,
         affiliate: bool,
         remember_token: str,
-        timestamps: str
+        created_at: str
     ) -> None:
         with DBConnectionHandler() as database:
             try:
-                user = UserEntity(
-                    id=uuid4(),
+                user = User(
+                    id=id,
                     name=name,
                     phone_number=phone_number,
                     status=status,
@@ -34,7 +34,7 @@ class UserRepository(IUserRepository):
                     pix=pix,
                     affiliate=affiliate,
                     remember_token=remember_token,
-                    timestamps=timestamps
+                    created_at=created_at
                 )
                 database.session.add(user)
                 database.session.commit()
@@ -46,25 +46,8 @@ class UserRepository(IUserRepository):
     def delete_user(cls, user_id: str) -> None:
         with DBConnectionHandler() as database:
             try:
-                database.session.query(UserEntity).filter_by(id=user_id).delete()
+                database.session.query(User).filter_by(id=user_id).delete()
                 database.session.commit()
             except Exception as exception:
                 database.session.rollback()
                 raise exception
-
-
-    #@classmethod
-    #def total_gain(cls) -> int:
-    #    if cls.affiliate is False: return 0
-    #    with DBConnectionHandler as database:
-    #        try:
-    #            affiliates = database.session
-    #                .query(UserEntity)
-    #                .find_by(id == AffiliateEntity.id)
-    #                .all()
-    #            values = affiliates.values()
-    #            total_gain = sum(values)
-    #            return total_gain
-    #        except Exception as exception:
-    #            database.session.rollback()
-    #            raise exception

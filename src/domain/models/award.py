@@ -1,10 +1,10 @@
-class Award:
+class AwardEntity:
     def __init__(
         self,
         product_id: int,
         participant_id: int,
         order: str,
-        phone_number: int,
+        phone_number: str,
         description: str,
         winner: str,
         quota: str,

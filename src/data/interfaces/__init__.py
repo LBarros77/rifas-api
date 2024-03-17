@@ -1,0 +1,4 @@
+from .product_repository import ProductRepositoryInterface
+from .payment_repository import PaymentRepositoryInterface
+from .participante_respository import ParticipanteRepositoryInterface
+from .prize_repository import PrizeRepositoryInterface

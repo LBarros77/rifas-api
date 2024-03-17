@@ -1,12 +1,11 @@
-from sqlalchemy import Column, Integer, String
+from uuid import uuid4
+from sqlalchemy import Column, String, Float
 from src.infrastructure.database.settings.base import Base
 
 
 class Participant(Base):
     __tablename__ = "participant"
 
-    id = Column(Integer, primary_key=True, autoincrement=True)
-    numbers = Column(Integer)
-    reserveds = Column(Integer)
-    payeds = Column(Integer)
-    confereds = Column(Integer)
+    id = Column(String, primary_key=True, autoincremant=True, default=uuid4)
+    name = Column(String)
+    value = Column(Float)

@@ -6,7 +6,7 @@ class DBConnectionHandler:
     def __init__(self) -> None:
         self.__url_database = "{}://{}:{}@{}:{}/{}".format(
             'postgresql+psycopg2',
-            'postgres',
+            'admin',
             'password',
             'localhost',
             '5432',

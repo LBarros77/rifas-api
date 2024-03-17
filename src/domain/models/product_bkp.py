@@ -1,4 +1,4 @@
-class ProductBkp:
+class ProductBkpEntity:
     def __init__(
         self,
         name: str,
@@ -14,11 +14,11 @@ class ProductBkp:
         minimum: int,
         maximum: int,
         expiration: str,
-        qtd_ranking: int,
+        ranking_quantity: int,
         parcial: str,
         gateway: str,
         subname: str,
-        qtd_zeros: int,
+        zeros_quantity: int,
         game_mode: str
     ) -> None:
         self.name = name

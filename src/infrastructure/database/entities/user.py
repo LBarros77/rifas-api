@@ -1,10 +1,11 @@
-from sqlalchemy import Column, String, Integer, Boolean, DateTime
 from datetime import datetime
+from sqlalchemy import Column, String, Integer, Boolean
+from sqlalchemy.types import DateTime
 from src.infrastructure.database.settings.base import Base
 
 
 class User(Base):
-    __tablename__ = "users"
+    __tablename__ = "Users"
 
     id = Column(String, primary_key=True)
     name = Column(String, nullable=False)
@@ -16,7 +17,7 @@ class User(Base):
     pix = Column(String)
     affiliate = Column(Boolean, default=False)
     remember_token = Column(String)
-    timestamps = Column(DateTime, default=datetime.now(tz=None))
+    created_at = Column(DateTime)
 
     def __repr__(self):
         return f"Users [id={self.id}, first_name={self.name}]"
